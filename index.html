@@ -6,28 +6,51 @@
      <script src="https://code.jquery.com/jquery-3.4.1.js"
       integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
       crossorigin="anonymous"></script>
-
   </head>
   <body>
+    <script>
+       $(document).ready(function(){
+        $("#posts").click(function(){
+           $.get('https://jsonplaceholder.typicode.com/posts', function(data){
+	          console.log(data);
+            });
+          });
+      });
+
+      $(document).ready(function(){
+        $("#postId10").click(function(){
+          $.get('https://jsonplaceholder.typicode.com/post/10', function(data){
+	        console.log(data);
+          });
+         });
+      });
+
+      $(document).ready(function(){
+        $("#postId12").click(function(){
+           $.get('https://jsonplaceholder.typicode.com/post/12/comments', function(data){
+	          console.log(data);
+            });
+         });
+      });
+
+       $(document).ready(function(){
+        $("#postUserId2").click(function(){
+           $.get('https://jsonplaceholder.typicode.com/user/2/posts', function(data){
+	          console.log(data);
+            });
+         });
+      });
+ </script>
     
     <div id="div1"><h2>Posts</h2></div>
-          <button>Get all posts</button>
-          <script>
-          $.get('https://jsonplaceholder.typicode.com/posts', function(posts){
-          console.log(posts); });
-          </script>
-
+      <button id="posts">Get all posts</button><br>
+        <button id="postId10">Get post ID: 10</button><br>
+         <button id="postId12">Get comments from post ID: 12</button><br>
+          <button id="postUserId2">Get posts from user ID: 2</button><br>
   
 
   
-<!-- 
-        <button id="myButton">Get post userId: 10</button>
 
-            <button id="myButton">Get comments from post userId: 12</button>
-
-                <button id="myButton">Get all posts from userId: 2</button>
-
-                    <button id="myButton">Create a new post</button> -->
   
     
   </body>
