@@ -9,6 +9,7 @@
   </head>
   <body>
     <script>
+      //all posts
        $(document).ready(function(){
         $("#posts").click(function(){
            $.get('https://jsonplaceholder.typicode.com/posts', function(data){
@@ -16,7 +17,7 @@
             });
           });
       });
-
+      //post id-10
       $(document).ready(function(){
         $("#postId10").click(function(){
           $.get('https://jsonplaceholder.typicode.com/post/10', function(data){
@@ -24,7 +25,7 @@
           });
          });
       });
-
+    //post id-12: comments
       $(document).ready(function(){
         $("#postId12").click(function(){
            $.get('https://jsonplaceholder.typicode.com/post/12/comments', function(data){
@@ -32,7 +33,7 @@
             });
          });
       });
-
+      //post id-2
        $(document).ready(function(){
         $("#postUserId2").click(function(){
            $.get('https://jsonplaceholder.typicode.com/user/2/posts', function(data){
@@ -40,6 +41,63 @@
             });
          });
       });
+       //create a new post
+       $(document).ready(function(){
+        $("#createPost").click(function(){
+           $.post('https://jsonplaceholder.typicode.com/posts',{
+             userId: 1,
+             title: "My New Post",
+             body: "This is the body"
+            }, function(data){
+                console.log(data.id);
+            });
+          });
+        });
+      //replace the post with id of 12
+      $(document).ready(function(){
+        $("#replacePostWith12").click(function(){
+            $.ajax({
+                method: 'PUT',
+                url: 'https://jsonplaceholder.typicode.com/posts/12',
+                data: {
+                  userId: 1,
+                  title: "New Post",
+                  body: "New post added"
+                },
+                complete: function(response){
+                  console.log(response.responseJSON);
+                }
+              })
+          });
+      });
+      //update the title field of post ID-12
+      $(document).ready(function(){
+        $("#updateTitlePostId12").click(function(){
+          $.ajax({
+              method: 'PATCH',
+              url: 'https://jsonplaceholder.typicode.com/posts/12',
+              data: {
+                title: "patched it"
+              },
+              complete: function(response){
+                console.log(response.responseJSON);
+              }
+            })
+        });
+      });
+      //delete post ID-12
+      $(document).ready(function(){
+        $("#deletePostId12").click(function(){
+          $.ajax({
+            method: 'DELETE',
+            url: 'https://jsonplaceholder.typicode.com/posts/12',
+            complete: function(response){
+              console.log(response.statusText);
+	          }
+          })
+        });
+      });
+
  </script>
     
     <div id="div1"><h2>Posts</h2></div>
@@ -47,8 +105,10 @@
         <button id="postId10">Get post ID: 10</button><br>
          <button id="postId12">Get comments from post ID: 12</button><br>
           <button id="postUserId2">Get posts from user ID: 2</button><br>
-  
-
+            <button id="createPost">Create a new post</button><br>
+              <button id="replacePostWith12">Replace created post with post ID: 12</button><br>
+                <button id="updateTitlePostId12">Update title of post ID: 12</button><br>
+                    <button id="deletePostId12">Delete post ID: 12</button><br>
   
 
   
