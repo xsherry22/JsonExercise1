@@ -10,6 +10,9 @@
   <body>
   <div id="div1"><h2>Posts</h2></div>
    <div id="newPost"><h2>Post Created Successfully!</h2></div>
+      <div id="replacePost"><h2>Post Replaced Successfully!</h2></div>
+      <div id="updatePost"><h2>Title Updated Successfully!</h2></div>
+      <div id="deletePost"><h2>Deleted Post Successfully!</h2></div>
   
     <button id="posts">Get all posts</button><br>
        <button id="postId10">Get post ID: 10</button><br>
@@ -27,8 +30,10 @@
       $(document).ready(function(){
          $("a").hide();
           $("#newPost").hide();
+          $("#replacePost").hide();
+           $("#updatePost").hide();
+            $("#deletePost").hide();
       });
-
       //show all posts
        $(document).ready(function(){
         $("#posts").click(function(){
@@ -39,7 +44,6 @@
             });
           });
         }); 
-        
       //post id-10
       $(document).ready(function(){
         $("#postId10").click(function(){
@@ -47,7 +51,7 @@
 	          console.log(data);
             $("#div1").load("https://jsonplaceholder.typicode.com/post/10");
             $("button").hide();
-              $("a").show();
+            $("a").show();
             });
           });
          });
@@ -103,8 +107,10 @@
                 },
                 complete: function(response){
                   console.log(response.responseJSON);
-                   $("#div1").load("https://jsonplaceholder.typicode.com/posts/12");
+                   $("#div1").load("https://jsonplaceholder.typicode.com/posts/101");
+                  $("#div1").hide();
                   $("button").hide();
+                  $("#replacePost").show();
                   $("a").show();
                 }
               })
@@ -121,11 +127,12 @@
               },
               complete: function(response){
                 console.log(response.responseJSON);
+                $("#updatePost").show();
                   $("#div1").load("https://jsonplaceholder.typicode.com/posts/12");
                   $("button").hide();
+                  
                   $("a").show();
               }
-            
             })
         });
       });
@@ -139,6 +146,7 @@
               console.log(response.statusText);
                 $("#div1").load("https://jsonplaceholder.typicode.com/posts/12");
                   $("button").hide();
+                  $("#deletePost").show();
                   $("a").show();
 	          }
           })
