@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+     <script src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+    
+    <div id="div1"><h2>Posts</h2></div>
+          <button>Get all posts</button>
+          <script>
+          $.get('https://jsonplaceholder.typicode.com/posts', function(posts){
+          console.log(posts); });
+          </script>
+
+  
+
+  
+<!-- 
+        <button id="myButton">Get post userId: 10</button>
+
+            <button id="myButton">Get comments from post userId: 12</button>
+
+                <button id="myButton">Get all posts from userId: 2</button>
+
+                    <button id="myButton">Create a new post</button> -->
+  
+    
+  </body>
+</html>
