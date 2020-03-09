@@ -8,28 +8,57 @@
       crossorigin="anonymous"></script>
   </head>
   <body>
+  <div id="div1"><h2>Posts</h2></div>
+   <div id="newPost"><h2>Post Created Successfully!</h2></div>
+  
+    <button id="posts">Get all posts</button><br>
+       <button id="postId10">Get post ID: 10</button><br>
+         <button id="postId12">Get comments from post ID: 12</button><br>
+          <button id="postUserId2">Get posts from user ID: 2</button><br>
+            <button id="createPost">Create a new post</button><br>
+              <button id="replacePostWith12">Replace created post with post ID: 12</button><br>
+                <button id="updateTitlePostId12">Update title of post ID: 12</button><br>
+                    <button id="deletePostId12">Delete post ID: 12</button><br>
+   
+ <a href="/">Go back home</a>
+    
+   
     <script>
-      //all posts
+      $(document).ready(function(){
+         $("a").hide();
+          $("#newPost").hide();
+      });
+
+      //show all posts
        $(document).ready(function(){
         $("#posts").click(function(){
            $.get('https://jsonplaceholder.typicode.com/posts', function(data){
-	          console.log(data);
+	          $("#div1").load("https://jsonplaceholder.typicode.com/posts");
+             $("button").hide();
+             $("a").show();
             });
           });
-      });
+        }); 
+        
       //post id-10
       $(document).ready(function(){
         $("#postId10").click(function(){
           $.get('https://jsonplaceholder.typicode.com/post/10', function(data){
-	        console.log(data);
+	          console.log(data);
+            $("#div1").load("https://jsonplaceholder.typicode.com/post/10");
+            $("button").hide();
+              $("a").show();
+            });
           });
          });
-      });
     //post id-12: comments
       $(document).ready(function(){
         $("#postId12").click(function(){
            $.get('https://jsonplaceholder.typicode.com/post/12/comments', function(data){
 	          console.log(data);
+            $("#div1").load("https://jsonplaceholder.typicode.com/post/12/comments");
+            $("button").hide();
+              $("a").show();
             });
          });
       });
@@ -38,6 +67,9 @@
         $("#postUserId2").click(function(){
            $.get('https://jsonplaceholder.typicode.com/user/2/posts', function(data){
 	          console.log(data);
+            $("#div1").load("https://jsonplaceholder.typicode.com/user/2/posts");
+            $("button").hide();
+            $("a").show();
             });
          });
       });
@@ -49,8 +81,13 @@
              title: "My New Post",
              body: "This is the body"
             }, function(data){
-                console.log(data.id);
+                console.log(data.id); 
             });
+            $("#div1").load("https://jsonplaceholder.typicode.com/posts?userId=1");
+                  $("button").hide();
+                  $("#div1").hide();
+                  $("#newPost").show();
+                  $("a").show(); 
           });
         });
       //replace the post with id of 12
@@ -66,6 +103,9 @@
                 },
                 complete: function(response){
                   console.log(response.responseJSON);
+                   $("#div1").load("https://jsonplaceholder.typicode.com/posts/12");
+                  $("button").hide();
+                  $("a").show();
                 }
               })
           });
@@ -81,7 +121,11 @@
               },
               complete: function(response){
                 console.log(response.responseJSON);
+                  $("#div1").load("https://jsonplaceholder.typicode.com/posts/12");
+                  $("button").hide();
+                  $("a").show();
               }
+            
             })
         });
       });
@@ -93,6 +137,9 @@
             url: 'https://jsonplaceholder.typicode.com/posts/12',
             complete: function(response){
               console.log(response.statusText);
+                $("#div1").load("https://jsonplaceholder.typicode.com/posts/12");
+                  $("button").hide();
+                  $("a").show();
 	          }
           })
         });
@@ -100,16 +147,9 @@
 
  </script>
     
-    <div id="div1"><h2>Posts</h2></div>
-      <button id="posts">Get all posts</button><br>
-        <button id="postId10">Get post ID: 10</button><br>
-         <button id="postId12">Get comments from post ID: 12</button><br>
-          <button id="postUserId2">Get posts from user ID: 2</button><br>
-            <button id="createPost">Create a new post</button><br>
-              <button id="replacePostWith12">Replace created post with post ID: 12</button><br>
-                <button id="updateTitlePostId12">Update title of post ID: 12</button><br>
-                    <button id="deletePostId12">Delete post ID: 12</button><br>
-  
+    
+      
+       
 
   
     
